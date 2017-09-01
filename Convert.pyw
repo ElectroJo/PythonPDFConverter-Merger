@@ -8,14 +8,20 @@
 # Copyright:   (c) ElectroJo
 # Licence:     N/A
 #-------------------------------------------------------------------------------
+
 from tkinter import *
 from os import walk
 import win32com.client
 import os
 import sys
 from tkinter.filedialog import askdirectory, askopenfilename
+
+try:
+    from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
+except ImportError:
+    print("Error, Py2PDF not installed")
+
 import time
-from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 import re
 
 foldername = ""
