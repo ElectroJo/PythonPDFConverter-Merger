@@ -15,12 +15,10 @@ import win32com.client
 import os
 import sys
 from tkinter.filedialog import askdirectory, askopenfilename
-
 try:
     from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 except ImportError:
     print("Error, Py2PDF not installed")
-
 import time
 import re
 
@@ -204,8 +202,12 @@ def PDFFileMergeTen(FileDict,exiter="nope"):
         Merge.write("Combined.pdf")
     Merge.close()
     WindowClear()
-    for PDFiles in FileDict:
-        os.remove(FileDict[PDFiles])
+    ShouldDelete = input("Delete Source Files? 'Yes' To Confirm.")
+    if ShouldDelete == "Yes":
+        for PDFiles in FileDict:
+            os.remove(FileDict[PDFiles])
+    else:
+        pass
 
 def PDFSplit():
     FileToSplit = []
