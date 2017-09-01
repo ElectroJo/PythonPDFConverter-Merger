@@ -18,7 +18,38 @@ from tkinter.filedialog import askdirectory, askopenfilename
 try:
     from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 except ImportError:
-    print("Error, Py2PDF not installed")
+    print("Error, no PyPDF2 Found")
+"""
+    DownloadPyPDF2 = input("Error: Cannot find PyPDF2. Would you like to install? 'Yes' to install, no to cancel")
+    if DownloadPyPDF2 == "Yes":
+        import urllib.request
+        import tarfile
+        import hashlib
+        #Install PyPDF2 code
+        #Download code from https://stackoverflow.com/questions/22676/how-do-i-download-a-file-over-http-using-python
+        urllib.request.urlretrieve ("https://pypi.python.org/packages/b4/01/68fcc0d43daf4c6bdbc6b33cc3f77bda531c86b174cac56ef0ffdb96faab/PyPDF2-1.26.0.tar.gz", "PyPDF2.tar.gz")
+        PyPDF2Hash = hashlib.md5(open("PyPDF2.tar.gz", 'rb').read()).hexdigest()
+        if PyPDF2Hash == "2301acc0ecbab0633d4c9b883d50ee5e":
+            #extract code from https://stackoverflow.com/questions/30887979/i-want-to-create-a-script-for-unzip-tar-gz-file-via-python
+            PyPDF2FileName = 'PyPDF2.tar.gz'
+            if (PyPDF2FileName.endswith("tar.gz")):
+                tar = tarfile.open(PyPDF2FileName, "r:gz")
+                tar.extractall()
+                tar.close()
+                os.remove("PyPDF2.tar.gz")
+            else:
+                print("ERROR EXTRACTING PyPDF2, NO FILE?")
+        else:
+            newurl = input("ERROR, MD5 DOES NOT MATCH THAT ON RECORD. ENTER NEW tar.gz URL TO OVERRIDE")
+            os.remove("PyPDF2.tar.gz")
+            urllib.request.urlretrieve (newurl, "PyPDF2.tar.gz")
+            if (PyPDF2FileName.endswith("tar.gz")):
+                tar = tarfile.open(PyPDF2FileName, "r:gz")
+                tar.extractall()
+                tar.close()
+                os.remove("PyPDF2.tar.gz")
+        os.chdir("PyPDF2-1.26.0")
+"""
 import time
 import re
 
