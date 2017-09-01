@@ -181,6 +181,7 @@ def HowManyMerge():
     window.deiconify()
     window.title("How Many PDFs?")
     InputForThis = StringVar()
+    EntryLable = Label(window,width=25,text="Please Enter The # of PDFs").pack()
     EntryForThis = Entry(window,textvariable=InputForThis).pack()
     MergeThem = Button(window,text="Next",command= lambda: PDFMergeTen(int(InputForThis.get())+1)).pack(side=LEFT)
     cancle.pack(side=LEFT)
